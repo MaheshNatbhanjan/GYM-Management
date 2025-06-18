@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <meta name="description" content="FitLife Gym - Premium fitness center with expert trainers, modern equipment, and flexible membership plans.">
+    <meta name="description" content="FitLife Gym - Premium fitness center with AI-powered features, smart check-in, and personalized training.">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- QR Code Generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -47,7 +60,7 @@
                     <div class="user-profile hidden" id="user-profile">
                         <div class="user-menu">
                             <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Profile" class="profile-img" id="profile-img">
-                            <span id="user-name">John Doe</span>
+                            <span id="user-name">User</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="dropdown-menu">
@@ -73,7 +86,7 @@
                 <span>Rated #1 Gym in the City</span>
             </div>
             <h1 class="hero-title">Transform Your Body, <span class="gradient-text">Transform Your Life</span></h1>
-            <p class="hero-subtitle">Join our community of fitness enthusiasts and achieve your health goals with expert guidance, state-of-the-art facilities, and personalized training programs</p>
+            <p class="hero-subtitle">Join our community of fitness enthusiasts and achieve your health goals with AI-powered features, smart technology, and personalized training programs</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary btn-glow" id="join-now-btn">
                     <span>Start Your Journey</span>
@@ -180,7 +193,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Advanced Features Section -->
     <section id="features" class="section bg-gradient">
         <div class="container">
             <div class="section-header">
@@ -188,53 +201,53 @@
                 <p>Experience the future of fitness with our cutting-edge technology</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card" onclick="openSmartCheckinModal()">
                     <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fas fa-qrcode"></i>
                     </div>
                     <h3>Smart Check-In</h3>
                     <p>QR code-based contactless entry system for seamless gym access</p>
-                    <button class="feature-btn" onclick="generateQRCode()">Generate QR Code</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" onclick="openProgressTrackingModal()">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Progress Tracking</h3>
                     <p>Advanced analytics to monitor your fitness journey and achievements</p>
-                    <button class="feature-btn" onclick="openProgressTracker()">View Progress</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" onclick="openAIWorkoutModal()">
                     <div class="feature-icon">
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>AI Workout Plans</h3>
                     <p>Personalized workout recommendations powered by artificial intelligence</p>
-                    <button class="feature-btn" onclick="openWorkoutPlanner()">Get AI Plan</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" onclick="openNutritionModal()">
                     <div class="feature-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
                     <h3>Nutrition Calculator</h3>
                     <p>Calculate calories, macros, and get personalized meal recommendations</p>
-                    <button class="feature-btn" onclick="openNutritionCalculator()">Calculate Nutrition</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" onclick="openCommunityHubModal()">
                     <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3>Fitness Chatbot</h3>
+                    <h3>Community Hub</h3>
                     <p>24/7 AI-powered fitness assistant for workouts, diet, and schedule guidance</p>
-                    <button class="feature-btn" onclick="openFitnessChatbot()">Start Chat</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" onclick="openAchievementsModal()">
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
                     <h3>Achievement System</h3>
                     <p>Earn badges and compete with other members on our leaderboard</p>
-                    <button class="feature-btn" onclick="openAchievements()">View Achievements</button>
+                    <button class="feature-btn">Learn More</button>
                 </div>
             </div>
         </div>
@@ -250,7 +263,7 @@
                         <span>Award Winning Gym</span>
                     </div>
                     <h2>About FitLife</h2>
-                    <p class="about-description">At FitLife, we believe fitness is not just about building a better body, but creating a better life. Our mission is to provide a supportive environment where everyone, regardless of fitness level, can achieve their personal health goals.</p>
+                    <p class="about-description">At FitLife, we believe fitness is not just about building a better body, but creating a better life. Our mission is to provide a supportive environment where everyone, regardless of fitness level, can achieve their personal health goals with cutting-edge technology and expert guidance.</p>
                     
                     <div class="about-features">
                         <div class="about-feature">
@@ -303,8 +316,7 @@
                             <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <div class="about-overlay" id="video-overlay">
-                        </div>
+                        <div class="about-overlay" id="video-overlay"></div>
                     </div>
                     <div class="floating-cards">
                         <div class="floating-card">
@@ -658,102 +670,6 @@
         </div>
     </section>
 
-    <!-- Health Tools Section -->
-    <section id="health-tools" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Health & Fitness Tools</h2>
-                <p>Track your progress and optimize your health</p>
-            </div>
-            
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <h3>BMI Calculator</h3>
-                    </div>
-                    <div class="tool-content">
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="height">Height (cm)</label>
-                                <input type="number" id="height" placeholder="170" min="100" max="250">
-                            </div>
-                            <div class="input-group">
-                                <label for="weight">Weight (kg)</label>
-                                <input type="number" id="weight" placeholder="70" min="30" max="300">
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" id="calculate-bmi">Calculate BMI</button>
-                        <div class="bmi-result" id="bmi-result">
-                            <div class="bmi-display">
-                                <div class="bmi-value" id="bmi-value">--</div>
-                                <div class="bmi-category" id="bmi-category">Enter your details</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3>Heart Rate Zones</h3>
-                    </div>
-                    <div class="tool-content">
-                        <div class="input-group">
-                            <label for="age">Age</label>
-                            <input type="number" id="age" placeholder="25" min="15" max="100">
-                        </div>
-                        <button class="btn btn-primary" id="calculate-hr">Calculate Zones</button>
-                        <div class="hr-zones" id="hr-zones">
-                            <!-- Heart rate zones will be populated -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <h3>Calorie Calculator</h3>
-                    </div>
-                    <div class="tool-content">
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="cal-weight">Weight (kg)</label>
-                                <input type="number" id="cal-weight" placeholder="70">
-                            </div>
-                            <div class="input-group">
-                                <label for="workout-duration">Duration (min)</label>
-                                <input type="number" id="workout-duration" placeholder="60">
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="workout-type">Workout Type</label>
-                            <select id="workout-type">
-                                <option value="cardio">Cardio</option>
-                                <option value="strength">Strength Training</option>
-                                <option value="yoga">Yoga</option>
-                                <option value="hiit">HIIT</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" id="calculate-calories">Calculate Calories</button>
-                        <div class="calorie-result" id="calorie-result">
-                            <div class="calories-burned" id="calories-burned">--</div>
-                            <div class="calorie-label">Calories Burned</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
-
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
@@ -879,7 +795,7 @@
                 <div class="footer-section">
                     <div class="footer-logo">
                         <h2>Fit<span>Life</span></h2>
-                        <p>Transform your body, transform your life. Join the FitLife community and discover your potential.</p>
+                        <p>Transform your body, transform your life. Join the FitLife community and discover your potential with cutting-edge AI technology.</p>
                     </div>
                 </div>
                 
@@ -926,11 +842,11 @@
                         <p>&copy; 2024 FitLife Gym. All rights reserved.</p>
                     </div>
                     <div class="footer-legal-links">
-                        <a href="#" onclick="openLegalModal('privacy')" class="legal-link">
+                        <a href="#" onclick="openPrivacyModal()" class="legal-link">
                             <i class="fas fa-shield-alt"></i>
                             Privacy Policy
                         </a>
-                        <a href="#" onclick="openLegalModal('terms')" class="legal-link">
+                        <a href="#" onclick="openTermsModal()" class="legal-link">
                             <i class="fas fa-file-contract"></i>
                             Terms of Service
                         </a>
@@ -941,92 +857,7 @@
     </footer>
 
     <!-- All Modals -->
-    <!-- Privacy Policy Modal -->
-    <div class="modal large-modal" id="privacy-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeLegalModal('privacy')">&times;</span>
-            <div class="modal-header">
-                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
-                <p>How we collect, use, and protect your information</p>
-            </div>
-            <div class="modal-body">
-                <div class="legal-content">
-                    <div class="content-section">
-                        <h3>Information We Collect</h3>
-                        <p>We collect information you provide directly to us and information we obtain automatically when you use our services:</p>
-                        <ul>
-                            <li>Personal identification information (name, email address, phone number)</li>
-                            <li>Account credentials and preferences</li>
-                            <li>Payment and billing information</li>
-                            <li>Health and fitness data you choose to share</li>
-                            <li>Usage data and analytics</li>
-                            <li>Device information and IP addresses</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-section">
-                        <h3>How We Use Your Information</h3>
-                        <p>We use the information we collect to:</p>
-                        <ul>
-                            <li>Provide and improve our fitness services</li>
-                            <li>Process transactions and manage memberships</li>
-                            <li>Send you technical notices and customer support</li>
-                            <li>Communicate about promotions and fitness programs</li>
-                            <li>Monitor usage patterns and analyze trends</li>
-                            <li>Ensure security and prevent fraud</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-section">
-                        <h3>Contact Us</h3>
-                        <p>If you have questions about this Privacy Policy, please contact us at:</p>
-                        <p><strong>Email:</strong> privacy@fitlifegym.com<br>
-                        <strong>Phone:</strong> +91 (8104152483)<br>
-                        <strong>Address:</strong> 123 Fitness Street, Health City, HC 12345</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terms of Service Modal -->
-    <div class="modal large-modal" id="terms-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeLegalModal('terms')">&times;</span>
-            <div class="modal-header">
-                <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
-                <p>Terms and conditions for using our fitness services</p>
-            </div>
-            <div class="modal-body">
-                <div class="legal-content">
-                    <div class="content-section">
-                        <h3>Acceptance of Terms</h3>
-                        <p>By accessing and using FitLife Gym services, you accept and agree to be bound by the terms and provisions of this agreement.</p>
-                    </div>
-                    
-                    <div class="content-section">
-                        <h3>Membership and Registration</h3>
-                        <p>To access certain features of our services, you must register for an account:</p>
-                        <ul>
-                            <li>You must be at least 18 years old to register</li>
-                            <li>You are responsible for maintaining the security of your account</li>
-                            <li>One person per account registration</li>
-                            <li>All information provided must be accurate and current</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="content-section">
-                        <h3>Contact Information</h3>
-                        <p>For questions about these Terms of Service, contact us at:</p>
-                        <p><strong>Email:</strong> legal@fitlifegym.com<br>
-                        <strong>Phone:</strong> +91 (8104152483)<br>
-                        <strong>Address:</strong> 123 Fitness Street, Health City, HC 12345</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Login/Signup Modal -->
     <div class="modal" id="auth-modal">
         <div class="modal-content">
@@ -1037,12 +868,12 @@
             </div>
             <div class="modal-body">
                 <div class="auth-tabs">
-                    <button class="tab-btn active" data-tab="login">Login</button>
-                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
                 </div>
                 
                 <!-- Login Form -->
-                <div class="tab-pane active" id="login-tab">
+                <div class="auth-form active" id="login-form-container">
                     <form class="auth-form" id="login-form">
                         <div class="form-group">
                             <label for="login-email">Email Address</label>
@@ -1068,16 +899,16 @@
                 </div>
                 
                 <!-- Signup Form -->
-                <div class="tab-pane" id="signup-tab">
+                <div class="auth-form" id="signup-form-container">
                     <form class="auth-form" id="signup-form">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="signup-first-name">First Name</label>
-                                <input type="text" id="signup-first-name" placeholder="First name" required>
+                                <input type="text" id="signup-first-name" placeholder="First Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="signup-last-name">Last Name</label>
-                                <input type="text" id="signup-last-name" placeholder="Last name" required>
+                                <input type="text" id="signup-last-name" placeholder="Last Name" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -1096,7 +927,7 @@
                             <label class="checkbox">
                                 <input type="checkbox" id="agree-terms" required>
                                 <span class="checkmark"></span>
-                                I agree to the <a href="#" onclick="openLegalModal('terms')">Terms & Conditions</a>
+                                I agree to the <a href="#" onclick="openTermsModal()">Terms & Conditions</a>
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">
@@ -1105,280 +936,122 @@
                         </button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dashboard Modal -->
-    <div class="modal large-modal" id="dashboard-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>My Dashboard</h2>
-                <p>Your fitness journey overview</p>
-            </div>
-            <div class="modal-body">
-                <div class="dashboard-container">
-                    <div class="dashboard-stats">
-                        <div class="dashboard-stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div class="stat-info">
-                                <div class="stat-number" id="total-workouts">0</div>
-                                <div class="stat-label">Total Workouts</div>
-                            </div>
-                        </div>
-                        <div class="dashboard-stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-fire"></i>
-                            </div>
-                            <div class="stat-info">
-                                <div class="stat-number" id="calories-burned-total">0</div>
-                                <div class="stat-label">Calories Burned</div>
-                            </div>
-                        </div>
-                        <div class="dashboard-stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="stat-info">
-                                <div class="stat-number" id="workout-hours">0</div>
-                                <div class="stat-label">Workout Hours</div>
-                            </div>
-                        </div>
-                        <div class="dashboard-stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="stat-info">
-                                <div class="stat-number" id="achievements-earned">0</div>
-                                <div class="stat-label">Achievements</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dashboard-content">
-                        <div class="dashboard-section">
-                            <h3>Recent Activity</h3>
-                            <div class="activity-list" id="recent-activity">
-                                <!-- Recent activities will be populated here -->
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-section">
-                            <h3>Upcoming Classes</h3>
-                            <div class="upcoming-classes" id="upcoming-classes">
-                                <!-- Upcoming classes will be populated here -->
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-section">
-                            <h3>Quick Actions</h3>
-                            <div class="quick-actions">
-                                <button class="quick-action-btn" onclick="openWorkoutPlanner()">
-                                    <i class="fas fa-dumbbell"></i>
-                                    <span>New Workout</span>
-                                </button>
-                                <button class="quick-action-btn" onclick="document.getElementById('schedule').scrollIntoView(); closeAllModals();">
-                                    <i class="fas fa-calendar-plus"></i>
-                                    <span>Book Class</span>
-                                </button>
-                                <button class="quick-action-btn" onclick="openProgressTracker()">
-                                    <i class="fas fa-chart-line"></i>
-                                    <span>View Progress</span>
-                                </button>
-                                <button class="quick-action-btn" onclick="openNutritionCalculator()">
-                                    <i class="fas fa-utensils"></i>
-                                    <span>Nutrition Plan</span>
-                                </button>
-                            </div>
-                        </div>
+                
+                <div class="social-login">
+                    <p>Or continue with</p>
+                    <div class="social-buttons">
+                        <button class="social-btn google" id="google-signin-btn">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button class="social-btn facebook" id="facebook-signin-btn">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </button>
+                        <button class="social-btn github" id="github-signin-btn">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Profile Modal -->
-    <div class="modal large-modal" id="profile-modal">
+    <!-- Smart Check-In Modal -->
+    <div class="modal large-modal" id="smart-checkin-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
-                <h2>My Profile</h2>
-                <p>Manage your personal information and preferences</p>
+                <h2><i class="fas fa-qrcode"></i> Smart Check-In System</h2>
+                <p>Experience contactless gym entry with our QR code technology</p>
             </div>
             <div class="modal-body">
-                <div class="profile-container">
-                    <div class="profile-header">
-                        <div class="profile-avatar">
-                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Profile" id="profile-avatar">
-                            <button class="change-avatar-btn">
-                                <i class="fas fa-camera"></i>
-                            </button>
-                        </div>
-                        <div class="profile-info">
-                            <h3 id="profile-name">John Doe</h3>
-                            <p id="profile-email">john.doe@email.com</p>
-                            <span class="membership-badge">Premium Member</span>
+                <div class="checkin-container">
+                    <div class="checkin-tabs">
+                        <button class="checkin-tab-btn active" data-tab="generate">Generate QR</button>
+                        <button class="checkin-tab-btn" data-tab="scan">Scan QR</button>
+                        <button class="checkin-tab-btn" data-tab="history">Check-in History</button>
+                    </div>
+                    
+                    <!-- Generate QR Tab -->
+                    <div class="checkin-tab-pane active" id="generate-qr">
+                        <div class="qr-generator">
+                            <div class="qr-display">
+                                <div id="qr-code-container"></div>
+                                <div class="qr-info">
+                                    <h4 id="qr-user-name">Please login to generate QR code</h4>
+                                    <p id="qr-member-id">Member ID: --</p>
+                                    <p id="qr-membership-type">Membership: --</p>
+                                    <p class="qr-validity">Valid for: 24 hours</p>
+                                </div>
+                            </div>
+                            <div class="qr-actions">
+                                <button class="btn btn-primary" onclick="generateQRCode()" id="generate-qr-btn">
+                                    <i class="fas fa-qrcode"></i>
+                                    Generate QR Code
+                                </button>
+                                <button class="btn btn-outline" onclick="downloadQRCode()" id="download-qr-btn" disabled>
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <button class="btn btn-outline" onclick="shareQRCode()" id="share-qr-btn" disabled>
+                                    <i class="fas fa-share"></i>
+                                    Share
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="profile-tabs">
-                        <button class="profile-tab-btn active" data-tab="personal">Personal Info</button>
-                        <button class="profile-tab-btn" data-tab="fitness">Fitness Goals</button>
-                        <button class="profile-tab-btn" data-tab="preferences">Preferences</button>
-                        <button class="profile-tab-btn" data-tab="security">Security</button>
+                    <!-- Scan QR Tab -->
+                    <div class="checkin-tab-pane" id="scan-qr">
+                        <div class="qr-scanner">
+                            <div class="scanner-container">
+                                <div class="scanner-frame">
+                                    <div class="scanner-overlay">
+                                        <i class="fas fa-camera"></i>
+                                        <p>Position QR code within the frame</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary" onclick="startQRScanner()">
+                                    <i class="fas fa-camera"></i>
+                                    Start Scanner
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="profile-content">
-                        <!-- Personal Info Tab -->
-                        <div class="profile-tab-pane active" id="personal-tab">
-                            <form class="profile-form">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="profile-first-name">First Name</label>
-                                        <input type="text" id="profile-first-name" value="John">
+                    <!-- Check-in History Tab -->
+                    <div class="checkin-tab-pane" id="checkin-history">
+                        <div class="history-container">
+                            <h4>Recent Check-ins</h4>
+                            <div class="history-list" id="checkin-history-list">
+                                <div class="history-item">
+                                    <div class="history-info">
+                                        <h5>Today's Workout</h5>
+                                        <p>Dec 17, 2024 • 6:30 AM</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="profile-last-name">Last Name</label>
-                                        <input type="text" id="profile-last-name" value="Doe">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile-email-input">Email Address</label>
-                                    <input type="email" id="profile-email-input" value="john.doe@email.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="profile-phone">Phone Number</label>
-                                    <input type="tel" id="profile-phone" value="+1 (555) 123-4567">
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="profile-age">Age</label>
-                                        <input type="number" id="profile-age" value="28">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="profile-gender">Gender</label>
-                                        <select id="profile-gender">
-                                            <option value="male" selected>Male</option>
-                                            <option value="female">Female</option>
-                                            <option value="other">Other</option>
-                                        </select>
+                                    <div class="history-status">
+                                        <span class="status-badge success">Checked In</span>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Profile</button>
-                            </form>
-                        </div>
-                        
-                        <!-- Fitness Goals Tab -->
-                        <div class="profile-tab-pane" id="fitness-tab">
-                            <div class="fitness-goals">
-                                <h4>Current Goals</h4>
-                                <div class="goals-list">
-                                    <div class="goal-item">
-                                        <div class="goal-info">
-                                            <h5>Lose 10 lbs</h5>
-                                            <p>Target: March 2024</p>
-                                        </div>
-                                        <div class="goal-progress">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 60%"></div>
-                                            </div>
-                                            <span>60%</span>
-                                        </div>
+                                <div class="history-item">
+                                    <div class="history-info">
+                                        <h5>Evening Session</h5>
+                                        <p>Dec 16, 2024 • 7:00 PM</p>
                                     </div>
-                                    <div class="goal-item">
-                                        <div class="goal-info">
-                                            <h5>Run 5K in under 25 minutes</h5>
-                                            <p>Target: April 2024</p>
-                                        </div>
-                                        <div class="goal-progress">
-                                            <div class="progress-bar">
-                                                <div class="progress-fill" style="width: 40%"></div>
-                                            </div>
-                                            <span>40%</span>
-                                        </div>
+                                    <div class="history-status">
+                                        <span class="status-badge success">Checked Out</span>
                                     </div>
                                 </div>
-                                <button class="btn btn-outline" onclick="addNewGoal()">Add New Goal</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Preferences Tab -->
-                        <div class="profile-tab-pane" id="preferences-tab">
-                            <div class="preferences-form">
-                                <h4>Notification Preferences</h4>
-                                <div class="preference-item">
-                                    <label class="checkbox">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                        Email notifications for class reminders
-                                    </label>
-                                </div>
-                                <div class="preference-item">
-                                    <label class="checkbox">
-                                        <input type="checkbox" checked>
-                                        <span class="checkmark"></span>
-                                        SMS notifications for bookings
-                                    </label>
-                                </div>
-                                <div class="preference-item">
-                                    <label class="checkbox">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                        Marketing emails
-                                    </label>
-                                </div>
-                                
-                                <h4>Workout Preferences</h4>
-                                <div class="form-group">
-                                    <label for="preferred-workout-time">Preferred Workout Time</label>
-                                    <select id="preferred-workout-time">
-                                        <option value="morning">Morning (6AM - 10AM)</option>
-                                        <option value="afternoon" selected>Afternoon (12PM - 4PM)</option>
-                                        <option value="evening">Evening (6PM - 10PM)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fitness-level">Fitness Level</label>
-                                    <select id="fitness-level">
-                                        <option value="beginner">Beginner</option>
-                                        <option value="intermediate" selected>Intermediate</option>
-                                        <option value="advanced">Advanced</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-primary">Save Preferences</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Security Tab -->
-                        <div class="profile-tab-pane" id="security-tab">
-                            <div class="security-form">
-                                <h4>Change Password</h4>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="current-password">Current Password</label>
-                                        <input type="password" id="current-password">
+                                <div class="history-item">
+                                    <div class="history-info">
+                                        <h5>Morning Yoga</h5>
+                                        <p>Dec 15, 2024 • 8:00 AM</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="new-password">New Password</label>
-                                        <input type="password" id="new-password">
+                                    <div class="history-status">
+                                        <span class="status-badge success">Completed</span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="confirm-new-password">Confirm New Password</label>
-                                        <input type="password" id="confirm-new-password">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update Password</button>
-                                </form>
-                                
-                                <h4>Two-Factor Authentication</h4>
-                                <div class="security-option">
-                                    <div class="security-info">
-                                        <h5>SMS Authentication</h5>
-                                        <p>Receive verification codes via SMS</p>
-                                    </div>
-                                    <button class="btn btn-outline">Enable</button>
                                 </div>
                             </div>
                         </div>
@@ -1388,13 +1061,13 @@
         </div>
     </div>
 
-    <!-- Progress Tracker Modal -->
-    <div class="modal large-modal" id="progress-modal">
+    <!-- Progress Tracking Modal -->
+    <div class="modal large-modal" id="progress-tracking-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
-                <h2>Progress Tracker</h2>
-                <p>Monitor your fitness journey and achievements</p>
+                <h2><i class="fas fa-chart-line"></i> Progress Tracking</h2>
+                <p>Monitor your fitness journey with advanced analytics</p>
             </div>
             <div class="modal-body">
                 <div class="progress-container">
@@ -1442,6 +1115,7 @@
                         <button class="progress-tab-btn" data-tab="weight">Weight</button>
                         <button class="progress-tab-btn" data-tab="measurements">Measurements</button>
                         <button class="progress-tab-btn" data-tab="workouts">Workouts</button>
+                        <button class="progress-tab-btn" data-tab="goals">Goals</button>
                     </div>
                     
                     <div class="progress-content">
@@ -1450,7 +1124,7 @@
                             <div class="progress-charts">
                                 <div class="chart-container">
                                     <h4>Weekly Progress</h4>
-                                    <canvas id="weekly-progress-chart" width="400" height="200"></canvas>
+                                    <canvas id="progress-chart" width="400" height="200"></canvas>
                                 </div>
                                 <div class="progress-summary">
                                     <h4>This Month's Highlights</h4>
@@ -1480,32 +1154,28 @@
                                 <div class="weight-input-section">
                                     <h4>Log Your Weight</h4>
                                     <div class="weight-form">
-                                        <input type="number" id="weight-input" placeholder="Weight (lbs)" step="0.1">
+                                        <input type="number" id="weight-input" placeholder="Weight (kg)" step="0.1">
                                         <input type="date" id="weight-date">
                                         <button class="btn btn-primary" onclick="logWeight()">Log Weight</button>
                                     </div>
-                                </div>
-                                <div class="weight-chart">
-                                    <h4>Weight Progress</h4>
-                                    <canvas id="weight-chart" width="400" height="200"></canvas>
                                 </div>
                                 <div class="weight-history">
                                     <h4>Recent Entries</h4>
                                     <div class="weight-entries" id="weight-entries">
                                         <div class="weight-entry">
                                             <span class="date">Dec 15, 2024</span>
-                                            <span class="weight">175.2 lbs</span>
-                                            <span class="change">-0.8 lbs</span>
+                                            <span class="weight">75.2 kg</span>
+                                            <span class="change">-0.8 kg</span>
                                         </div>
                                         <div class="weight-entry">
                                             <span class="date">Dec 10, 2024</span>
-                                            <span class="weight">176.0 lbs</span>
-                                            <span class="change">-1.2 lbs</span>
+                                            <span class="weight">76.0 kg</span>
+                                            <span class="change">-1.2 kg</span>
                                         </div>
                                         <div class="weight-entry">
                                             <span class="date">Dec 5, 2024</span>
-                                            <span class="weight">177.2 lbs</span>
-                                            <span class="change">-0.5 lbs</span>
+                                            <span class="weight">77.2 kg</span>
+                                            <span class="change">-0.5 kg</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1519,23 +1189,23 @@
                                     <h4>Log Measurements</h4>
                                     <div class="measurements-grid">
                                         <div class="form-group">
-                                            <label>Chest (inches)</label>
+                                            <label>Chest (cm)</label>
                                             <input type="number" id="chest-measurement" step="0.1">
                                         </div>
                                         <div class="form-group">
-                                            <label>Waist (inches)</label>
+                                            <label>Waist (cm)</label>
                                             <input type="number" id="waist-measurement" step="0.1">
                                         </div>
                                         <div class="form-group">
-                                            <label>Hips (inches)</label>
+                                            <label>Hips (cm)</label>
                                             <input type="number" id="hips-measurement" step="0.1">
                                         </div>
                                         <div class="form-group">
-                                            <label>Arms (inches)</label>
+                                            <label>Arms (cm)</label>
                                             <input type="number" id="arms-measurement" step="0.1">
                                         </div>
                                         <div class="form-group">
-                                            <label>Thighs (inches)</label>
+                                            <label>Thighs (cm)</label>
                                             <input type="number" id="thighs-measurement" step="0.1">
                                         </div>
                                         <div class="form-group">
@@ -1544,38 +1214,6 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-primary" onclick="logMeasurements()">Log Measurements</button>
-                                </div>
-                                <div class="measurements-history">
-                                    <h4>Measurement History</h4>
-                                    <div class="measurements-table">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Chest</th>
-                                                    <th>Waist</th>
-                                                    <th>Hips</th>
-                                                    <th>Arms</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="measurements-tbody">
-                                                <tr>
-                                                    <td>Dec 15, 2024</td>
-                                                    <td>42.0"</td>
-                                                    <td>32.5"</td>
-                                                    <td>38.0"</td>
-                                                    <td>15.5"</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dec 1, 2024</td>
-                                                    <td>42.5"</td>
-                                                    <td>33.0"</td>
-                                                    <td>38.5"</td>
-                                                    <td>15.0"</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1634,257 +1272,305 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Goals Tab -->
+                        <div class="progress-tab-pane" id="goals-progress">
+                            <div class="goals-tracker">
+                                <div class="goals-input">
+                                    <h4>Set New Goal</h4>
+                                    <div class="goal-form">
+                                        <select id="goal-type">
+                                            <option value="">Select Goal Type</option>
+                                            <option value="weight-loss">Weight Loss</option>
+                                            <option value="muscle-gain">Muscle Gain</option>
+                                            <option value="strength">Strength Building</option>
+                                            <option value="endurance">Endurance</option>
+                                            <option value="flexibility">Flexibility</option>
+                                        </select>
+                                        <input type="text" id="goal-description" placeholder="Goal description">
+                                        <input type="number" id="goal-target" placeholder="Target value">
+                                        <input type="date" id="goal-deadline">
+                                        <button class="btn btn-primary" onclick="addGoal()">Add Goal</button>
+                                    </div>
+                                </div>
+                                <div class="goals-list">
+                                    <h4>Current Goals</h4>
+                                    <div class="goal-item">
+                                        <div class="goal-info">
+                                            <h5>Lose 5kg</h5>
+                                            <p>Target: March 2025</p>
+                                        </div>
+                                        <div class="goal-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 60%;"></div>
+                                            </div>
+                                            <span>3kg lost / 5kg target</span>
+                                        </div>
+                                    </div>
+                                    <div class="goal-item">
+                                        <div class="goal-info">
+                                            <h5>Bench Press 100kg</h5>
+                                            <p>Target: June 2025</p>
+                                        </div>
+                                        <div class="goal-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 75%;"></div>
+                                            </div>
+                                            <span>75kg current / 100kg target</span>
+                                        </div>
+                                    </div>
+                                    <div class="goal-item">
+                                        <div class="goal-info">
+                                            <h5>Run 10km in 45 minutes</h5>
+                                            <p>Target: April 2025</p>
+                                        </div>
+                                        <div class="goal-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 40%;"></div>
+                                            </div>
+                                            <span>52 minutes current / 45 minutes target</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- My Workouts Modal -->
-    <div class="modal large-modal" id="workouts-modal">
+    <!-- AI Workout Plans Modal -->
+    <div class="modal large-modal" id="ai-workout-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
-                <h2>My Workouts</h2>
-                <p>Create, track, and manage your workout routines</p>
+                <h2><i class="fas fa-robot"></i> AI Workout Plans</h2>
+                <p>Get personalized workout recommendations powered by artificial intelligence</p>
             </div>
             <div class="modal-body">
-                <div class="workouts-container">
-                    <div class="workouts-header">
-                        <div class="workout-tabs">
-                            <button class="workout-tab-btn active" data-tab="routines">My Routines</button>
-                            <button class="workout-tab-btn" data-tab="templates">Templates</button>
-                            <button class="workout-tab-btn" data-tab="history">History</button>
-                        </div>
-                        <button class="btn btn-primary" onclick="createNewWorkout()">
-                            <i class="fas fa-plus"></i>
-                            Create Workout
-                        </button>
+                <div class="ai-workout-container">
+                    <div class="workout-tabs">
+                        <button class="workout-tab-btn active" data-tab="generator">Plan Generator</button>
+                        <button class="workout-tab-btn" data-tab="my-plans">My Plans</button>
+                        <button class="workout-tab-btn" data-tab="recommendations">AI Recommendations</button>
                     </div>
                     
-                    <div class="workouts-content">
-                        <!-- My Routines Tab -->
-                        <div class="workout-tab-pane active" id="routines-tab">
-                            <div class="routines-grid">
-                                <div class="routine-card">
-                                    <div class="routine-header">
-                                        <h4>Upper Body Blast</h4>
-                                        <div class="routine-actions">
-                                            <button class="btn-icon" onclick="editRoutine('upper-body')">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="deleteRoutine('upper-body')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
+                    <!-- Plan Generator Tab -->
+                    <div class="workout-tab-pane active" id="generator-tab">
+                        <div class="plan-generator">
+                            <h3>Tell us about your fitness goals</h3>
+                            <div class="generator-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fitness-goal">Primary Goal</label>
+                                        <select id="fitness-goal">
+                                            <option value="">Select your goal</option>
+                                            <option value="weight-loss">Weight Loss</option>
+                                            <option value="muscle-gain">Muscle Gain</option>
+                                            <option value="strength">Build Strength</option>
+                                            <option value="endurance">Improve Endurance</option>
+                                            <option value="flexibility">Increase Flexibility</option>
+                                            <option value="general">General Fitness</option>
+                                        </select>
                                     </div>
-                                    <div class="routine-info">
-                                        <span class="duration">45 minutes</span>
-                                        <span class="exercises">8 exercises</span>
-                                        <span class="difficulty">Intermediate</span>
+                                    <div class="form-group">
+                                        <label for="fitness-level">Fitness Level</label>
+                                        <select id="fitness-level">
+                                            <option value="">Select your level</option>
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
                                     </div>
-                                    <div class="routine-exercises">
-                                        <div class="exercise-preview">Bench Press, Pull-ups, Shoulder Press...</div>
-                                    </div>
-                                    <button class="btn btn-primary btn-block" onclick="startWorkout('upper-body')">
-                                        Start Workout
-                                    </button>
                                 </div>
-                                
-                                <div class="routine-card">
-                                    <div class="routine-header">
-                                        <h4>Leg Day Power</h4>
-                                        <div class="routine-actions">
-                                            <button class="btn-icon" onclick="editRoutine('leg-day')">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="deleteRoutine('leg-day')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="workout-days">Days per week</label>
+                                        <select id="workout-days">
+                                            <option value="">Select days</option>
+                                            <option value="3">3 days</option>
+                                            <option value="4">4 days</option>
+                                            <option value="5">5 days</option>
+                                            <option value="6">6 days</option>
+                                            <option value="7">7 days</option>
+                                        </select>
                                     </div>
-                                    <div class="routine-info">
-                                        <span class="duration">60 minutes</span>
-                                        <span class="exercises">10 exercises</span>
-                                        <span class="difficulty">Advanced</span>
+                                    <div class="form-group">
+                                        <label for="workout-duration">Session Duration</label>
+                                        <select id="workout-duration">
+                                            <option value="">Select duration</option>
+                                            <option value="30">30 minutes</option>
+                                            <option value="45">45 minutes</option>
+                                            <option value="60">60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
                                     </div>
-                                    <div class="routine-exercises">
-                                        <div class="exercise-preview">Squats, Deadlifts, Lunges...</div>
-                                    </div>
-                                    <button class="btn btn-primary btn-block" onclick="startWorkout('leg-day')">
-                                        Start Workout
-                                    </button>
                                 </div>
-                                
-                                <div class="routine-card">
-                                    <div class="routine-header">
-                                        <h4>HIIT Cardio</h4>
-                                        <div class="routine-actions">
-                                            <button class="btn-icon" onclick="editRoutine('hiit-cardio')">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="deleteRoutine('hiit-cardio')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="equipment">Available Equipment</label>
+                                    <div class="equipment-options">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="dumbbells">
+                                            <span class="checkmark"></span>
+                                            Dumbbells
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="barbells">
+                                            <span class="checkmark"></span>
+                                            Barbells
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="machines">
+                                            <span class="checkmark"></span>
+                                            Machines
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="cardio">
+                                            <span class="checkmark"></span>
+                                            Cardio Equipment
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="bodyweight">
+                                            <span class="checkmark"></span>
+                                            Bodyweight Only
+                                        </label>
                                     </div>
-                                    <div class="routine-info">
-                                        <span class="duration">30 minutes</span>
-                                        <span class="exercises">6 exercises</span>
-                                        <span class="difficulty">Intermediate</span>
+                                </div>
+                                <button class="btn btn-primary btn-block" onclick="generateAIWorkoutPlan()">
+                                    <i class="fas fa-magic"></i>
+                                    Generate AI Workout Plan
+                                </button>
+                            </div>
+                            
+                            <div class="workout-plan-result" id="ai-workout-result" style="display: none;">
+                                <h3>Your Personalized AI Workout Plan</h3>
+                                <div class="plan-overview">
+                                    <div class="plan-stat">
+                                        <span class="stat-number" id="ai-plan-days">4</span>
+                                        <span class="stat-label">Days/Week</span>
                                     </div>
-                                    <div class="routine-exercises">
-                                        <div class="exercise-preview">Burpees, Mountain Climbers, Jump Squats...</div>
+                                    <div class="plan-stat">
+                                        <span class="stat-number" id="ai-plan-duration">45</span>
+                                        <span class="stat-label">Minutes/Session</span>
                                     </div>
-                                    <button class="btn btn-primary btn-block" onclick="startWorkout('hiit-cardio')">
-                                        Start Workout
+                                    <div class="plan-stat">
+                                        <span class="stat-number" id="ai-plan-exercises">8</span>
+                                        <span class="stat-label">Exercises/Day</span>
+                                    </div>
+                                </div>
+                                <div class="workout-schedule" id="ai-workout-schedule">
+                                    <!-- Generated workout plan will be inserted here -->
+                                </div>
+                                <div class="plan-actions">
+                                    <button class="btn btn-primary" onclick="saveAIWorkoutPlan()">
+                                        <i class="fas fa-save"></i>
+                                        Save Plan
+                                    </button>
+                                    <button class="btn btn-outline" onclick="regenerateAIWorkoutPlan()">
+                                        <i class="fas fa-redo"></i>
+                                        Generate New Plan
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Templates Tab -->
-                        <div class="workout-tab-pane" id="templates-tab">
-                            <div class="templates-grid">
-                                <div class="template-card">
-                                    <div class="template-image">
-                                        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" alt="Beginner Full Body">
+                    </div>
+                    
+                    <!-- My Plans Tab -->
+                    <div class="workout-tab-pane" id="my-plans-tab">
+                        <div class="saved-plans">
+                            <h3>Your Saved Workout Plans</h3>
+                            <div class="plans-grid">
+                                <div class="plan-card">
+                                    <div class="plan-header">
+                                        <h4>Strength Building Program</h4>
+                                        <span class="plan-badge">4 weeks</span>
                                     </div>
-                                    <div class="template-content">
-                                        <h4>Beginner Full Body</h4>
-                                        <p>Perfect for those starting their fitness journey</p>
-                                        <div class="template-info">
-                                            <span>30 min</span>
-                                            <span>6 exercises</span>
-                                            <span>Beginner</span>
+                                    <div class="plan-details">
+                                        <p>Focus: Upper/Lower Split</p>
+                                        <p>Duration: 60 minutes</p>
+                                        <p>Frequency: 4 days/week</p>
+                                    </div>
+                                    <div class="plan-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 65%;"></div>
                                         </div>
-                                        <button class="btn btn-outline" onclick="useTemplate('beginner-full-body')">
-                                            Use Template
-                                        </button>
+                                        <span>Week 3 of 4</span>
+                                    </div>
+                                    <div class="plan-actions">
+                                        <button class="btn btn-primary btn-sm">Continue</button>
+                                        <button class="btn btn-outline btn-sm">View Details</button>
                                     </div>
                                 </div>
                                 
-                                <div class="template-card">
-                                    <div class="template-image">
-                                        <img src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg" alt="Strength Builder">
+                                <div class="plan-card">
+                                    <div class="plan-header">
+                                        <h4>Fat Loss HIIT</h4>
+                                        <span class="plan-badge">6 weeks</span>
                                     </div>
-                                    <div class="template-content">
-                                        <h4>Strength Builder</h4>
-                                        <p>Build muscle and increase strength</p>
-                                        <div class="template-info">
-                                            <span>45 min</span>
-                                            <span>8 exercises</span>
-                                            <span>Intermediate</span>
+                                    <div class="plan-details">
+                                        <p>Focus: High Intensity Cardio</p>
+                                        <p>Duration: 30 minutes</p>
+                                        <p>Frequency: 5 days/week</p>
+                                    </div>
+                                    <div class="plan-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 100%;"></div>
                                         </div>
-                                        <button class="btn btn-outline" onclick="useTemplate('strength-builder')">
-                                            Use Template
-                                        </button>
+                                        <span>Completed!</span>
                                     </div>
-                                </div>
-                                
-                                <div class="template-card">
-                                    <div class="template-image">
-                                        <img src="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg" alt="Fat Burner">
-                                    </div>
-                                    <div class="template-content">
-                                        <h4>Fat Burner</h4>
-                                        <p>High-intensity workout for weight loss</p>
-                                        <div class="template-info">
-                                            <span>35 min</span>
-                                            <span>7 exercises</span>
-                                            <span>Advanced</span>
-                                        </div>
-                                        <button class="btn btn-outline" onclick="useTemplate('fat-burner')">
-                                            Use Template
-                                        </button>
+                                    <div class="plan-actions">
+                                        <button class="btn btn-primary btn-sm">Restart</button>
+                                        <button class="btn btn-outline btn-sm">View Results</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- History Tab -->
-                        <div class="workout-tab-pane" id="history-tab">
-                            <div class="workout-history">
-                                <div class="history-filters">
-                                    <select id="history-period">
-                                        <option value="week">This Week</option>
-                                        <option value="month">This Month</option>
-                                        <option value="year">This Year</option>
-                                    </select>
-                                    <select id="history-type">
-                                        <option value="all">All Workouts</option>
-                                        <option value="strength">Strength</option>
-                                        <option value="cardio">Cardio</option>
-                                        <option value="flexibility">Flexibility</option>
-                                    </select>
+                    </div>
+                    
+                    <!-- AI Recommendations Tab -->
+                    <div class="workout-tab-pane" id="recommendations-tab">
+                        <div class="ai-recommendations">
+                            <h3>AI Recommendations Based on Your Progress</h3>
+                            <div class="recommendations-list">
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <div class="recommendation-content">
+                                        <h4>Increase Protein Intake</h4>
+                                        <p>Based on your strength training progress, consider increasing protein to 1.6g per kg of body weight for optimal muscle growth.</p>
+                                        <div class="recommendation-actions">
+                                            <button class="btn btn-sm btn-primary">Learn More</button>
+                                            <button class="btn btn-sm btn-outline">Dismiss</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="history-list" id="workout-history">
-                                    <div class="history-item">
-                                        <div class="history-date">
-                                            <div class="date">Dec 15</div>
-                                            <div class="day">Today</div>
-                                        </div>
-                                        <div class="history-workout">
-                                            <h5>Upper Body Blast</h5>
-                                            <p>45 minutes • 280 calories • 8 exercises</p>
-                                            <div class="workout-tags">
-                                                <span class="tag">Strength</span>
-                                                <span class="tag">Upper Body</span>
-                                            </div>
-                                        </div>
-                                        <div class="history-actions">
-                                            <button class="btn-icon" onclick="viewWorkoutDetails('workout-1')">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="repeatWorkout('workout-1')">
-                                                <i class="fas fa-redo"></i>
-                                            </button>
+                                
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="recommendation-content">
+                                        <h4>Add Rest Day</h4>
+                                        <p>Your workout frequency is high. Consider adding an active recovery day to prevent overtraining and improve performance.</p>
+                                        <div class="recommendation-actions">
+                                            <button class="btn btn-sm btn-primary">Schedule Rest Day</button>
+                                            <button class="btn btn-sm btn-outline">Dismiss</button>
                                         </div>
                                     </div>
-                                    
-                                    <div class="history-item">
-                                        <div class="history-date">
-                                            <div class="date">Dec 13</div>
-                                            <div class="day">2 days ago</div>
-                                        </div>
-                                        <div class="history-workout">
-                                            <h5>HIIT Cardio</h5>
-                                            <p>30 minutes • 350 calories • 6 exercises</p>
-                                            <div class="workout-tags">
-                                                <span class="tag">Cardio</span>
-                                                <span class="tag">HIIT</span>
-                                            </div>
-                                        </div>
-                                        <div class="history-actions">
-                                            <button class="btn-icon" onclick="viewWorkoutDetails('workout-2')">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="repeatWorkout('workout-2')">
-                                                <i class="fas fa-redo"></i>
-                                            </button>
-                                        </div>
+                                </div>
+                                
+                                <div class="recommendation-card">
+                                    <div class="recommendation-icon">
+                                        <i class="fas fa-chart-line"></i>
                                     </div>
-                                    
-                                    <div class="history-item">
-                                        <div class="history-date">
-                                            <div class="date">Dec 11</div>
-                                            <div class="day">4 days ago</div>
-                                        </div>
-                                        <div class="history-workout">
-                                            <h5>Leg Day Power</h5>
-                                            <p>60 minutes • 420 calories • 10 exercises</p>
-                                            <div class="workout-tags">
-                                                <span class="tag">Strength</span>
-                                                <span class="tag">Lower Body</span>
-                                            </div>
-                                        </div>
-                                        <div class="history-actions">
-                                            <button class="btn-icon" onclick="viewWorkoutDetails('workout-3')">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button class="btn-icon" onclick="repeatWorkout('workout-3')">
-                                                <i class="fas fa-redo"></i>
-                                            </button>
+                                    <div class="recommendation-content">
+                                        <h4>Progressive Overload</h4>
+                                        <p>You've been consistent with your current weights. Time to increase the load by 5-10% for continued progress.</p>
+                                        <div class="recommendation-actions">
+                                            <button class="btn btn-sm btn-primary">Update Weights</button>
+                                            <button class="btn btn-sm btn-outline">Dismiss</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1896,95 +1582,677 @@
         </div>
     </div>
 
-    <!-- Fitness Chatbot Modal -->
-    <div class="modal large-modal" id="chatbot-modal">
+    <!-- Nutrition Calculator Modal -->
+    <div class="modal large-modal" id="nutrition-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
-                <h2><i class="fas fa-robot"></i> FitBot - Your AI Fitness Assistant</h2>
-                <p>Get personalized workout plans, diet advice, and schedule guidance</p>
+                <h2><i class="fas fa-utensils"></i> Nutrition Calculator</h2>
+                <p>Calculate calories, macros, and get personalized meal recommendations</p>
             </div>
             <div class="modal-body">
-                <div class="chatbot-container">
-                    <div class="chatbot-messages" id="chatbot-messages">
-                        <div class="bot-message">
-                            <div class="message-avatar">
-                                <i class="fas fa-robot"></i>
+                <div class="nutrition-container">
+                    <div class="nutrition-tabs">
+                        <button class="nutrition-tab-btn active" data-tab="calculator">Calculator</button>
+                        <button class="nutrition-tab-btn" data-tab="meal-plan">Meal Plan</button>
+                        <button class="nutrition-tab-btn" data-tab="food-log">Food Log</button>
+                        <button class="nutrition-tab-btn" data-tab="recipes">Recipes</button>
+                    </div>
+                    
+                    <!-- Calculator Tab -->
+                    <div class="nutrition-tab-pane active" id="calculator-tab">
+                        <div class="nutrition-form">
+                            <h3>Calculate Your Daily Nutrition Needs</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nutrition-age">Age</label>
+                                    <input type="number" id="nutrition-age" placeholder="25" min="15" max="100">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nutrition-gender">Gender</label>
+                                    <select id="nutrition-gender">
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="message-content">
-                                <p>Hello! I'm FitBot, your personal AI fitness assistant. I can help you with:</p>
-                                <ul>
-                                    <li>🏋️ Custom workout plans</li>
-                                    <li>🥗 Nutrition and diet advice</li>
-                                    <li>📅 Class schedules and booking</li>
-                                    <li>💪 Exercise form and techniques</li>
-                                    <li>🎯 Goal setting and tracking</li>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nutrition-height">Height (cm)</label>
+                                    <input type="number" id="nutrition-height" placeholder="170" min="100" max="250">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nutrition-weight">Weight (kg)</label>
+                                    <input type="number" id="nutrition-weight" placeholder="70" min="30" max="300">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="activity-level">Activity Level</label>
+                                <select id="activity-level">
+                                    <option value="">Select activity level</option>
+                                    <option value="sedentary">Sedentary (little/no exercise)</option>
+                                    <option value="light">Light (light exercise 1-3 days/week)</option>
+                                    <option value="moderate">Moderate (moderate exercise 3-5 days/week)</option>
+                                    <option value="active">Active (hard exercise 6-7 days/week)</option>
+                                    <option value="very-active">Very Active (very hard exercise, physical job)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nutrition-goal">Goal</label>
+                                <select id="nutrition-goal">
+                                    <option value="">Select goal</option>
+                                    <option value="maintain">Maintain Weight</option>
+                                    <option value="lose">Lose Weight</option>
+                                    <option value="gain">Gain Weight</option>
+                                    <option value="muscle">Build Muscle</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-block" onclick="calculateNutrition()">
+                                <i class="fas fa-calculator"></i>
+                                Calculate Nutrition Needs
+                            </button>
+                        </div>
+                        
+                        <div class="nutrition-results" id="nutrition-results" style="display: none;">
+                            <h3>Your Daily Nutrition Targets</h3>
+                            <div class="macro-breakdown">
+                                <div class="macro-card">
+                                    <div class="macro-icon">
+                                        <i class="fas fa-fire"></i>
+                                    </div>
+                                    <div class="macro-info">
+                                        <div class="macro-value" id="daily-calories">2000</div>
+                                        <div class="macro-label">Calories</div>
+                                    </div>
+                                </div>
+                                <div class="macro-card">
+                                    <div class="macro-icon">
+                                        <i class="fas fa-drumstick-bite"></i>
+                                    </div>
+                                    <div class="macro-info">
+                                        <div class="macro-value" id="daily-protein">150g</div>
+                                        <div class="macro-label">Protein</div>
+                                    </div>
+                                </div>
+                                <div class="macro-card">
+                                    <div class="macro-icon">
+                                        <i class="fas fa-bread-slice"></i>
+                                    </div>
+                                    <div class="macro-info">
+                                        <div class="macro-value" id="daily-carbs">250g</div>
+                                        <div class="macro-label">Carbs</div>
+                                    </div>
+                                </div>
+                                <div class="macro-card">
+                                    <div class="macro-icon">
+                                        <i class="fas fa-tint"></i>
+                                    </div>
+                                    <div class="macro-info">
+                                        <div class="macro-value" id="daily-fat">67g</div>
+                                        <div class="macro-label">Fat</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nutrition-tips">
+                                <h4>Personalized Tips</h4>
+                                <ul id="nutrition-tips-list">
+                                    <li>Eat protein with every meal to support muscle growth</li>
+                                    <li>Include complex carbs for sustained energy</li>
+                                    <li>Don't forget healthy fats for hormone production</li>
+                                    <li>Stay hydrated with at least 8 glasses of water daily</li>
                                 </ul>
-                                <p>What would you like to know about today?</p>
                             </div>
                         </div>
                     </div>
-                    <div class="chatbot-quick-actions">
-                        <button class="quick-action" onclick="sendQuickMessage('workout plan')">
-                            <i class="fas fa-dumbbell"></i>
-                            Workout Plan
-                        </button>
-                        <button class="quick-action" onclick="sendQuickMessage('diet advice')">
-                            <i class="fas fa-apple-alt"></i>
-                            Diet Advice
-                        </button>
-                        <button class="quick-action" onclick="sendQuickMessage('class schedule')">
-                            <i class="fas fa-calendar"></i>
-                            Class Schedule
-                        </button>
-                        <button class="quick-action" onclick="sendQuickMessage('exercise form')">
-                            <i class="fas fa-user-check"></i>
-                            Exercise Form
-                        </button>
+                    
+                    <!-- Meal Plan Tab -->
+                    <div class="nutrition-tab-pane" id="meal-plan-tab">
+                        <div class="meal-plan-container">
+                            <h3>AI-Generated Meal Plan</h3>
+                            <div class="meal-plan-controls">
+                                <select id="meal-plan-days">
+                                    <option value="1">1 Day</option>
+                                    <option value="3">3 Days</option>
+                                    <option value="7" selected>7 Days</option>
+                                </select>
+                                <select id="meal-plan-diet">
+                                    <option value="balanced">Balanced Diet</option>
+                                    <option value="keto">Ketogenic</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="paleo">Paleo</option>
+                                    <option value="mediterranean">Mediterranean</option>
+                                </select>
+                                <button class="btn btn-primary" onclick="generateMealPlan()">Generate Plan</button>
+                            </div>
+                            <div class="meal-plan-display" id="meal-plan-display">
+                                <div class="meal-plan-day">
+                                    <h4>Day 1</h4>
+                                    <div class="meals-grid">
+                                        <div class="meal">
+                                            <h5><i class="fas fa-sun"></i> Breakfast</h5>
+                                            <div class="meal-items">
+                                                <div class="meal-item">
+                                                    <span class="food-name">Oatmeal with berries</span>
+                                                    <span class="food-calories">350 cal</span>
+                                                </div>
+                                                <div class="meal-item">
+                                                    <span class="food-name">Greek yogurt</span>
+                                                    <span class="food-calories">150 cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="meal">
+                                            <h5><i class="fas fa-apple-alt"></i> Lunch</h5>
+                                            <div class="meal-items">
+                                                <div class="meal-item">
+                                                    <span class="food-name">Grilled chicken salad</span>
+                                                    <span class="food-calories">450 cal</span>
+                                                </div>
+                                                <div class="meal-item">
+                                                    <span class="food-name">Quinoa</span>
+                                                    <span class="food-calories">200 cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="meal">
+                                            <h5><i class="fas fa-utensils"></i> Dinner</h5>
+                                            <div class="meal-items">
+                                                <div class="meal-item">
+                                                    <span class="food-name">Salmon with vegetables</span>
+                                                    <span class="food-calories">400 cal</span>
+                                                </div>
+                                                <div class="meal-item">
+                                                    <span class="food-name">Sweet potato</span>
+                                                    <span class="food-calories">150 cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="meal">
+                                            <h5><i class="fas fa-cookie"></i> Snacks</h5>
+                                            <div class="meal-items">
+                                                <div class="meal-item">
+                                                    <span class="food-name">Protein shake</span>
+                                                    <span class="food-calories">200 cal</span>
+                                                </div>
+                                                <div class="meal-item">
+                                                    <span class="food-name">Mixed nuts</span>
+                                                    <span class="food-calories">100 cal</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="chatbot-input">
-                        <input type="text" id="chatbot-input" placeholder="Ask me anything about fitness..." maxlength="500">
-                        <button class="send-btn" onclick="sendChatbotMessage()">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                    
+                    <!-- Food Log Tab -->
+                    <div class="nutrition-tab-pane" id="food-log-tab">
+                        <div class="food-log-container">
+                            <h3>Today's Food Log</h3>
+                            <div class="food-log-summary">
+                                <div class="log-stat">
+                                    <span class="stat-value">1,450</span>
+                                    <span class="stat-label">Calories</span>
+                                    <span class="stat-target">/ 2000</span>
+                                </div>
+                                <div class="log-stat">
+                                    <span class="stat-value">95g</span>
+                                    <span class="stat-label">Protein</span>
+                                    <span class="stat-target">/ 150g</span>
+                                </div>
+                                <div class="log-stat">
+                                    <span class="stat-value">180g</span>
+                                    <span class="stat-label">Carbs</span>
+                                    <span class="stat-target">/ 250g</span>
+                                </div>
+                                <div class="log-stat">
+                                    <span class="stat-value">45g</span>
+                                    <span class="stat-label">Fat</span>
+                                    <span class="stat-target">/ 67g</span>
+                                </div>
+                            </div>
+                            <div class="add-food-section">
+                                <input type="text" id="food-search" placeholder="Search for food...">
+                                <button class="btn btn-primary" onclick="searchFood()">
+                                    <i class="fas fa-search"></i>
+                                    Search
+                                </button>
+                                <button class="btn btn-outline" onclick="scanBarcode()">
+                                    <i class="fas fa-barcode"></i>
+                                    Scan Barcode
+                                </button>
+                            </div>
+                            <div class="food-search-results" id="food-search-results" style="display: none;">
+                                <!-- Search results will be populated here -->
+                            </div>
+                            <div class="food-log-entries">
+                                <h4>Today's Entries</h4>
+                                <div class="log-entry">
+                                    <span class="food-name">Chicken Breast (200g)</span>
+                                    <span class="food-macros">350 cal | 65g protein</span>
+                                    <button class="remove-food"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="log-entry">
+                                    <span class="food-name">Brown Rice (150g)</span>
+                                    <span class="food-macros">220 cal | 45g carbs</span>
+                                    <button class="remove-food"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recipes Tab -->
+                    <div class="nutrition-tab-pane" id="recipes-tab">
+                        <div class="recipes-container">
+                            <h3>Healthy Recipes</h3>
+                            <div class="recipe-filters">
+                                <select id="recipe-category">
+                                    <option value="all">All Categories</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="snacks">Snacks</option>
+                                    <option value="smoothies">Smoothies</option>
+                                </select>
+                                <select id="recipe-diet">
+                                    <option value="all">All Diets</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="keto">Keto</option>
+                                    <option value="paleo">Paleo</option>
+                                </select>
+                                <input type="text" id="recipe-search" placeholder="Search recipes...">
+                            </div>
+                            <div class="recipes-grid">
+                                <div class="recipe-card">
+                                    <div class="recipe-image">
+                                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Protein Bowl">
+                                        <div class="recipe-time">
+                                            <i class="fas fa-clock"></i>
+                                            <span>25 min</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-content">
+                                        <h4>High-Protein Buddha Bowl</h4>
+                                        <p>A nutritious bowl packed with quinoa, grilled chicken, and fresh vegetables</p>
+                                        <div class="recipe-stats">
+                                            <span class="recipe-calories">520 cal</span>
+                                            <span class="recipe-protein">35g protein</span>
+                                            <span class="recipe-difficulty">Easy</span>
+                                        </div>
+                                        <div class="recipe-actions">
+                                            <button class="btn btn-primary btn-sm" onclick="viewRecipe('protein-bowl')">View Recipe</button>
+                                            <button class="btn btn-outline btn-sm" onclick="addToMealPlan('protein-bowl')">Add to Plan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="recipe-card">
+                                    <div class="recipe-image">
+                                        <img src="https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg" alt="Green Smoothie">
+                                        <div class="recipe-time">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5 min</span>
+                                        </div>
+                                    </div>
+                                    <div class="recipe-content">
+                                        <h4>Green Power Smoothie</h4>
+                                        <p>Energizing smoothie with spinach, banana, and protein powder</p>
+                                        <div class="recipe-stats">
+                                            <span class="recipe-calories">280 cal</span>
+                                            <span class="recipe-protein">25g protein</span>
+                                            <span class="recipe-difficulty">Easy</span>
+                                        </div>
+                                        <div class="recipe-actions">
+                                            <button class="btn btn-primary btn-sm" onclick="viewRecipe('green-smoothie')">View Recipe</button>
+                                            <button class="btn btn-outline btn-sm" onclick="addToMealPlan('green-smoothie')">Add to Plan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- QR Code Modal -->
-    <div class="modal" id="qr-modal">
+    <!-- Community Hub Modal -->
+    <div class="modal large-modal" id="community-hub-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
-                <h2>Your Gym Access QR Code</h2>
-                <p>Use this code for quick and contactless gym entry</p>
+                <h2><i class="fas fa-users"></i> Community Hub</h2>
+                <p>Connect with fellow fitness enthusiasts and get 24/7 AI assistance</p>
             </div>
             <div class="modal-body">
-                <div class="qr-container">
-                    <div class="qr-code" id="qr-code">
-                        <div class="qr-placeholder">
-                            <i class="fas fa-qrcode"></i>
-                            <p>QR Code will be generated here</p>
+                <div class="community-container">
+                    <div class="community-tabs">
+                        <button class="community-tab-btn active" data-tab="ai-assistant">AI Assistant</button>
+                        <button class="community-tab-btn" data-tab="community-feed">Community Feed</button>
+                        <button class="community-tab-btn" data-tab="challenges">Challenges</button>
+                        <button class="community-tab-btn" data-tab="forums">Forums</button>
+                    </div>
+                    
+                    <!-- AI Assistant Tab -->
+                    <div class="community-tab-pane active" id="ai-assistant-tab">
+                        <div class="ai-assistant-container">
+                            <div class="assistant-header">
+                                <div class="assistant-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="assistant-info">
+                                    <h3>FitBot AI Assistant</h3>
+                                    <p>Your 24/7 fitness companion</p>
+                                    <span class="status-indicator online">Online</span>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-container">
+                                <div class="chat-messages" id="ai-chat-messages">
+                                    <div class="message bot">
+                                        <div class="message-avatar">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div class="message-content">
+                                            <p>Hello! I'm FitBot, your AI fitness assistant. I can help you with:</p>
+                                            <ul>
+                                                <li>Workout planning and exercise recommendations</li>
+                                                <li>Nutrition advice and meal planning</li>
+                                                <li>Form corrections and technique tips</li>
+                                                <li>Motivation and goal setting</li>
+                                                <li>Class schedules and gym information</li>
+                                            </ul>
+                                            <p>What would you like to know?</p>
+                                        </div>
+                                        <div class="message-time">Just now</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="quick-actions">
+                                    <button class="quick-action-btn" onclick="sendQuickMessage('Create a workout plan for me')">
+                                        <i class="fas fa-dumbbell"></i>
+                                        Workout Plan
+                                    </button>
+                                    <button class="quick-action-btn" onclick="sendQuickMessage('Give me nutrition advice')">
+                                        <i class="fas fa-apple-alt"></i>
+                                        Nutrition Tips
+                                    </button>
+                                    <button class="quick-action-btn" onclick="sendQuickMessage('Show me today\'s classes')">
+                                        <i class="fas fa-calendar"></i>
+                                        Class Schedule
+                                    </button>
+                                    <button class="quick-action-btn" onclick="sendQuickMessage('Help me with exercise form')">
+                                        <i class="fas fa-user-check"></i>
+                                        Form Check
+                                    </button>
+                                </div>
+                                
+                                <div class="chat-input-container">
+                                    <input type="text" id="ai-chat-input" placeholder="Ask me anything about fitness...">
+                                    <button class="chat-send-btn" onclick="sendAIMessage()">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="qr-info">
-                        <h4>How to use:</h4>
-                        <ol>
-                            <li>Show this QR code at the gym entrance</li>
-                            <li>Scan at the check-in kiosk</li>
-                            <li>Enjoy your workout!</li>
-                        </ol>
-                        <div class="qr-actions">
-                            <button class="btn btn-outline" onclick="downloadQRCode()">
-                                <i class="fas fa-download"></i>
-                                Download
-                            </button>
-                            <button class="btn btn-primary" onclick="shareQRCode()">
-                                <i class="fas fa-share"></i>
-                                Share
-                            </button>
+                    
+                    <!-- Community Feed Tab -->
+                    <div class="community-tab-pane" id="community-feed-tab">
+                        <div class="community-feed">
+                            <div class="post-composer">
+                                <div class="composer-header">
+                                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Your Avatar" class="composer-avatar">
+                                    <input type="text" placeholder="Share your fitness journey..." class="composer-input">
+                                </div>
+                                <div class="composer-actions">
+                                    <button class="composer-btn">
+                                        <i class="fas fa-image"></i>
+                                        Photo
+                                    </button>
+                                    <button class="composer-btn">
+                                        <i class="fas fa-chart-line"></i>
+                                        Progress
+                                    </button>
+                                    <button class="composer-btn">
+                                        <i class="fas fa-trophy"></i>
+                                        Achievement
+                                    </button>
+                                    <button class="btn btn-primary btn-sm">Post</button>
+                                </div>
+                            </div>
+                            
+                            <div class="feed-posts">
+                                <div class="post">
+                                    <div class="post-header">
+                                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Sarah" class="post-avatar">
+                                        <div class="post-info">
+                                            <h4>Sarah Chen</h4>
+                                            <p>Yoga Instructor • 2 hours ago</p>
+                                        </div>
+                                        <button class="post-menu">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                    <div class="post-content">
+                                        <p>Just finished an amazing morning yoga session! 🧘‍♀️ Remember, consistency is key. Even 10 minutes of daily practice can make a huge difference in your flexibility and mental clarity.</p>
+                                        <div class="post-image">
+                                            <img src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg" alt="Yoga Session">
+                                        </div>
+                                    </div>
+                                    <div class="post-actions">
+                                        <button class="post-action">
+                                            <i class="fas fa-heart"></i>
+                                            <span>24</span>
+                                        </button>
+                                        <button class="post-action">
+                                            <i class="fas fa-comment"></i>
+                                            <span>8</span>
+                                        </button>
+                                        <button class="post-action">
+                                            <i class="fas fa-share"></i>
+                                            <span>3</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="post">
+                                    <div class="post-header">
+                                        <img src="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg" alt="Marcus" class="post-avatar">
+                                        <div class="post-info">
+                                            <h4>Marcus Williams</h4>
+                                            <p>Strength Coach • 4 hours ago</p>
+                                        </div>
+                                        <button class="post-menu">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                    <div class="post-content">
+                                        <p>New personal record! 💪 Just hit a 200kg deadlift after months of progressive training. The key is patience and proper form. Who's ready to crush their goals this week?</p>
+                                        <div class="achievement-badge">
+                                            <i class="fas fa-trophy"></i>
+                                            <span>New PR: 200kg Deadlift</span>
+                                        </div>
+                                    </div>
+                                    <div class="post-actions">
+                                        <button class="post-action">
+                                            <i class="fas fa-heart"></i>
+                                            <span>47</span>
+                                        </button>
+                                        <button class="post-action">
+                                            <i class="fas fa-comment"></i>
+                                            <span>15</span>
+                                        </button>
+                                        <button class="post-action">
+                                            <i class="fas fa-share"></i>
+                                            <span>7</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Challenges Tab -->
+                    <div class="community-tab-pane" id="challenges-tab">
+                        <div class="challenges-container">
+                            <h3>Active Challenges</h3>
+                            <div class="challenges-grid">
+                                <div class="challenge-card active">
+                                    <div class="challenge-header">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-fire"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>30-Day Fitness Streak</h4>
+                                            <p>Work out for 30 consecutive days</p>
+                                        </div>
+                                        <div class="challenge-status">
+                                            <span class="status-badge active">Active</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 60%;"></div>
+                                        </div>
+                                        <span>Day 18 of 30</span>
+                                    </div>
+                                    <div class="challenge-participants">
+                                        <span>1,247 participants</span>
+                                        <div class="participant-avatars">
+                                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Participant">
+                                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Participant">
+                                            <img src="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg" alt="Participant">
+                                            <span class="more-participants">+1244</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-actions">
+                                        <button class="btn btn-primary btn-sm">Continue Challenge</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="challenge-card">
+                                    <div class="challenge-header">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>December Distance Challenge</h4>
+                                            <p>Run/walk 100km this month</p>
+                                        </div>
+                                        <div class="challenge-status">
+                                            <span class="status-badge upcoming">Upcoming</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-details">
+                                        <p>Starts: December 1, 2024</p>
+                                        <p>Duration: 31 days</p>
+                                        <p>Reward: Distance Runner Badge</p>
+                                    </div>
+                                    <div class="challenge-participants">
+                                        <span>856 registered</span>
+                                    </div>
+                                    <div class="challenge-actions">
+                                        <button class="btn btn-outline btn-sm">Join Challenge</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="challenge-card">
+                                    <div class="challenge-header">
+                                        <div class="challenge-icon">
+                                            <i class="fas fa-apple-alt"></i>
+                                        </div>
+                                        <div class="challenge-info">
+                                            <h4>Healthy Eating Week</h4>
+                                            <p>Log healthy meals for 7 days</p>
+                                        </div>
+                                        <div class="challenge-status">
+                                            <span class="status-badge completed">Completed</span>
+                                        </div>
+                                    </div>
+                                    <div class="challenge-completion">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Completed on Nov 28, 2024</span>
+                                    </div>
+                                    <div class="challenge-reward">
+                                        <i class="fas fa-medal"></i>
+                                        <span>Nutrition Expert Badge Earned</span>
+                                    </div>
+                                    <div class="challenge-actions">
+                                        <button class="btn btn-outline btn-sm">View Results</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Forums Tab -->
+                    <div class="community-tab-pane" id="forums-tab">
+                        <div class="forums-container">
+                            <div class="forum-categories">
+                                <div class="forum-category">
+                                    <div class="category-icon">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                    <div class="category-info">
+                                        <h4>Strength Training</h4>
+                                        <p>Discuss weightlifting, powerlifting, and strength building</p>
+                                        <span class="category-stats">1,234 posts • 567 members</span>
+                                    </div>
+                                    <div class="category-latest">
+                                        <p>Latest: "Deadlift form check"</p>
+                                        <span>2 hours ago</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="forum-category">
+                                    <div class="category-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="category-info">
+                                        <h4>Cardio & Endurance</h4>
+                                        <p>Running, cycling, swimming, and cardio workouts</p>
+                                        <span class="category-stats">892 posts • 423 members</span>
+                                    </div>
+                                    <div class="category-latest">
+                                        <p>Latest: "Marathon training tips"</p>
+                                        <span>1 hour ago</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="forum-category">
+                                    <div class="category-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div class="category-info">
+                                        <h4>Nutrition & Diet</h4>
+                                        <p>Meal planning, supplements, and nutrition advice</p>
+                                        <span class="category-stats">756 posts • 389 members</span>
+                                    </div>
+                                    <div class="category-latest">
+                                        <p>Latest: "Protein powder recommendations"</p>
+                                        <span>30 minutes ago</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="forum-category">
+                                    <div class="category-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="category-info">
+                                        <h4>Yoga & Mindfulness</h4>
+                                        <p>Yoga practices, meditation, and mental wellness</p>
+                                        <span class="category-stats">445 posts • 278 members</span>
+                                    </div>
+                                    <div class="category-latest">
+                                        <p>Latest: "Morning yoga routine"</p>
+                                        <span>3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1992,11 +2260,650 @@
         </div>
     </div>
 
-    <!-- Floating Action Button -->
-    <div class="fab-container">
-        <button class="fab main-fab" id="main-fab" onclick="openFitnessChatbot()">
+    <!-- Achievement System Modal -->
+    <div class="modal large-modal" id="achievements-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Achievement System</h2>
+                <p>Earn badges and compete with other members on our leaderboard</p>
+            </div>
+            <div class="modal-body">
+                <div class="achievements-container">
+                    <div class="achievement-stats">
+                        <div class="achievement-stat">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Badges Earned</div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-number">2,450</div>
+                            <div class="stat-label">Total Points</div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-number">#12</div>
+                            <div class="stat-label">Leaderboard Rank</div>
+                        </div>
+                        <div class="achievement-stat">
+                            <div class="stat-number">Gold</div>
+                            <div class="stat-label">Current Tier</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements-tabs">
+                        <button class="achievement-tab-btn active" data-tab="earned">Earned</button>
+                        <button class="achievement-tab-btn" data-tab="available">Available</button>
+                        <button class="achievement-tab-btn" data-tab="leaderboard">Leaderboard</button>
+                        <button class="achievement-tab-btn" data-tab="tiers">Tiers</button>
+                    </div>
+                    
+                    <!-- Earned Achievements -->
+                    <div class="achievement-tab-pane active" id="earned-achievements">
+                        <div class="achievements-grid">
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <h4>First Workout</h4>
+                                <p>Complete your first workout session</p>
+                                <div class="achievement-date">Earned: Nov 15, 2024</div>
+                                <div class="achievement-points">+50 points</div>
+                            </div>
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
+                                <h4>Week Warrior</h4>
+                                <p>Work out 5 days in a week</p>
+                                <div class="achievement-date">Earned: Nov 22, 2024</div>
+                                <div class="achievement-points">+100 points</div>
+                            </div>
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-weight-hanging"></i>
+                                </div>
+                                <h4>Strength Builder</h4>
+                                <p>Complete 10 strength training sessions</p>
+                                <div class="achievement-date">Earned: Dec 1, 2024</div>
+                                <div class="achievement-points">+150 points</div>
+                            </div>
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <h4>Cardio King</h4>
+                                <p>Complete 20 cardio sessions</p>
+                                <div class="achievement-date">Earned: Dec 10, 2024</div>
+                                <div class="achievement-points">+200 points</div>
+                            </div>
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <h4>Nutrition Expert</h4>
+                                <p>Log meals for 7 consecutive days</p>
+                                <div class="achievement-date">Earned: Nov 28, 2024</div>
+                                <div class="achievement-points">+75 points</div>
+                            </div>
+                            <div class="achievement-card earned">
+                                <div class="achievement-badge">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>Social Butterfly</h4>
+                                <p>Attend 5 group classes</p>
+                                <div class="achievement-date">Earned: Dec 5, 2024</div>
+                                <div class="achievement-points">+100 points</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Available Achievements -->
+                    <div class="achievement-tab-pane" id="available-achievements">
+                        <div class="achievements-grid">
+                            <div class="achievement-card available">
+                                <div class="achievement-badge locked">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4>Marathon Master</h4>
+                                <p>Complete 50 cardio sessions</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 40%;"></div>
+                                    </div>
+                                    <span>20/50 sessions</span>
+                                </div>
+                                <div class="achievement-points">+500 points</div>
+                            </div>
+                            <div class="achievement-card available">
+                                <div class="achievement-badge locked">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4>Consistency Champion</h4>
+                                <p>Work out for 30 consecutive days</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%;"></div>
+                                    </div>
+                                    <span>18/30 days</span>
+                                </div>
+                                <div class="achievement-points">+750 points</div>
+                            </div>
+                            <div class="achievement-card available">
+                                <div class="achievement-badge locked">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4>Heavy Lifter</h4>
+                                <p>Deadlift 2x your body weight</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%;"></div>
+                                    </div>
+                                    <span>150kg / 200kg target</span>
+                                </div>
+                                <div class="achievement-points">+300 points</div>
+                            </div>
+                            <div class="achievement-card available">
+                                <div class="achievement-badge locked">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4>Zen Master</h4>
+                                <p>Complete 25 yoga sessions</p>
+                                <div class="achievement-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 32%;"></div>
+                                    </div>
+                                    <span>8/25 sessions</span>
+                                </div>
+                                <div class="achievement-points">+200 points</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard -->
+                    <div class="achievement-tab-pane" id="leaderboard-tab">
+                        <div class="leaderboard-container">
+                            <div class="leaderboard-header">
+                                <h3>Monthly Leaderboard</h3>
+                                <div class="leaderboard-filters">
+                                    <button class="filter-btn active">This Month</button>
+                                    <button class="filter-btn">All Time</button>
+                                    <button class="filter-btn">This Week</button>
+                                </div>
+                            </div>
+                            <div class="leaderboard-list">
+                                <div class="leaderboard-item rank-1">
+                                    <div class="rank-badge">
+                                        <i class="fas fa-crown"></i>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="member-info">
+                                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Member">
+                                        <div class="member-details">
+                                            <h4>Alex Johnson</h4>
+                                            <p>Elite Member</p>
+                                        </div>
+                                    </div>
+                                    <div class="member-stats">
+                                        <span class="points">3,250 pts</span>
+                                        <span class="workouts">45 workouts</span>
+                                    </div>
+                                </div>
+                                <div class="leaderboard-item rank-2">
+                                    <div class="rank-badge">
+                                        <i class="fas fa-medal"></i>
+                                        <span>2</span>
+                                    </div>
+                                    <div class="member-info">
+                                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Member">
+                                        <div class="member-details">
+                                            <h4>Sarah Chen</h4>
+                                            <p>Premium Member</p>
+                                        </div>
+                                    </div>
+                                    <div class="member-stats">
+                                        <span class="points">2,890 pts</span>
+                                        <span class="workouts">38 workouts</span>
+                                    </div>
+                                </div>
+                                <div class="leaderboard-item rank-3">
+                                    <div class="rank-badge">
+                                        <i class="fas fa-award"></i>
+                                        <span>3</span>
+                                    </div>
+                                    <div class="member-info">
+                                        <img src="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg" alt="Member">
+                                        <div class="member-details">
+                                            <h4>Marcus Williams</h4>
+                                            <p>Premium Member</p>
+                                        </div>
+                                    </div>
+                                    <div class="member-stats">
+                                        <span class="points">2,675 pts</span>
+                                        <span class="workouts">35 workouts</span>
+                                    </div>
+                                </div>
+                                <div class="leaderboard-item current-user">
+                                    <div class="rank-badge">
+                                        <span>12</span>
+                                    </div>
+                                    <div class="member-info">
+                                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="You">
+                                        <div class="member-details">
+                                            <h4>You</h4>
+                                            <p>Premium Member</p>
+                                        </div>
+                                    </div>
+                                    <div class="member-stats">
+                                        <span class="points">2,450 pts</span>
+                                        <span class="workouts">28 workouts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tiers -->
+                    <div class="achievement-tab-pane" id="tiers-tab">
+                        <div class="tiers-container">
+                            <h3>Membership Tiers</h3>
+                            <div class="tiers-list">
+                                <div class="tier-item completed">
+                                    <div class="tier-icon">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="tier-info">
+                                        <h4>Bronze Tier</h4>
+                                        <p>0 - 500 points</p>
+                                        <div class="tier-benefits">
+                                            <span>Basic profile badge</span>
+                                            <span>Community access</span>
+                                        </div>
+                                    </div>
+                                    <div class="tier-status">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Completed</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tier-item completed">
+                                    <div class="tier-icon">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="tier-info">
+                                        <h4>Silver Tier</h4>
+                                        <p>500 - 1,500 points</p>
+                                        <div class="tier-benefits">
+                                            <span>Silver profile badge</span>
+                                            <span>Priority support</span>
+                                            <span>Exclusive challenges</span>
+                                        </div>
+                                    </div>
+                                    <div class="tier-status">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Completed</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="tier-item current">
+                                    <div class="tier-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="tier-info">
+                                        <h4>Gold Tier</h4>
+                                        <p>1,500 - 3,000 points</p>
+                                        <div class="tier-benefits">
+                                            <span>Gold profile badge</span>
+                                            <span>VIP events access</span>
+                                            <span>Personal trainer discounts</span>
+                                            <span>Advanced analytics</span>
+                                        </div>
+                                    </div>
+                                    <div class="tier-status">
+                                        <div class="tier-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 63%;"></div>
+                                            </div>
+                                            <span>2,450 / 3,000 points</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tier-item locked">
+                                    <div class="tier-icon">
+                                        <i class="fas fa-crown"></i>
+                                    </div>
+                                    <div class="tier-info">
+                                        <h4>Platinum Tier</h4>
+                                        <p>3,000+ points</p>
+                                        <div class="tier-benefits">
+                                            <span>Platinum profile badge</span>
+                                            <span>Exclusive platinum lounge</span>
+                                            <span>Free personal training</span>
+                                            <span>Priority class booking</span>
+                                            <span>Nutrition consultation</span>
+                                        </div>
+                                    </div>
+                                    <div class="tier-status">
+                                        <i class="fas fa-lock"></i>
+                                        <span>550 points to unlock</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal large-modal" id="privacy-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt"></i> Privacy Policy</h2>
+                <p>Your privacy is important to us</p>
+            </div>
+            <div class="modal-body">
+                <div class="legal-content">
+                    <div class="legal-section">
+                        <h3>Information We Collect</h3>
+                        <p>We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support.</p>
+                        <ul>
+                            <li>Personal information (name, email, phone number)</li>
+                            <li>Fitness data (workouts, progress, goals)</li>
+                            <li>Usage information (app interactions, preferences)</li>
+                            <li>Device information (IP address, browser type)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>How We Use Your Information</h3>
+                        <p>We use the information we collect to provide, maintain, and improve our services:</p>
+                        <ul>
+                            <li>Provide personalized workout and nutrition recommendations</li>
+                            <li>Track your fitness progress and achievements</li>
+                            <li>Send you important updates and notifications</li>
+                            <li>Improve our AI algorithms and features</li>
+                            <li>Ensure the security of our platform</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Information Sharing</h3>
+                        <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy:</p>
+                        <ul>
+                            <li>With your explicit consent</li>
+                            <li>To comply with legal obligations</li>
+                            <li>To protect our rights and safety</li>
+                            <li>With service providers who assist our operations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Data Security</h3>
+                        <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Your Rights</h3>
+                        <p>You have the right to:</p>
+                        <ul>
+                            <li>Access your personal information</li>
+                            <li>Correct inaccurate information</li>
+                            <li>Delete your account and data</li>
+                            <li>Export your data</li>
+                            <li>Opt-out of marketing communications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Contact Us</h3>
+                        <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                        <p>Email: privacy@fitlifegym.com<br>
+                        Phone: +91 (8104152483)<br>
+                        Address: 123 Fitness Street, Health City, HC 12345</p>
+                    </div>
+                    
+                    <div class="legal-footer">
+                        <p><strong>Last updated:</strong> December 17, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal large-modal" id="terms-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-file-contract"></i> Terms of Service</h2>
+                <p>Please read these terms carefully</p>
+            </div>
+            <div class="modal-body">
+                <div class="legal-content">
+                    <div class="legal-section">
+                        <h3>Acceptance of Terms</h3>
+                        <p>By accessing and using FitLife Gym services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Membership and Services</h3>
+                        <p>FitLife Gym provides fitness facilities, training services, and digital wellness tools. Membership terms include:</p>
+                        <ul>
+                            <li>Monthly or annual membership options</li>
+                            <li>Access to gym facilities during operating hours</li>
+                            <li>Use of equipment and amenities</li>
+                            <li>Participation in group classes and programs</li>
+                            <li>Access to digital features and AI tools</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Member Responsibilities</h3>
+                        <p>As a member, you agree to:</p>
+                        <ul>
+                            <li>Follow all gym rules and safety guidelines</li>
+                            <li>Respect other members and staff</li>
+                            <li>Use equipment properly and safely</li>
+                            <li>Maintain personal hygiene standards</li>
+                            <li>Pay membership fees on time</li>
+                            <li>Provide accurate health and fitness information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Health and Safety</h3>
+                        <p>You acknowledge that:</p>
+                        <ul>
+                            <li>Physical exercise involves inherent risks</li>
+                            <li>You should consult a physician before starting any fitness program</li>
+                            <li>You participate in activities at your own risk</li>
+                            <li>FitLife Gym is not liable for injuries resulting from proper use of facilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Cancellation Policy</h3>
+                        <p>Membership cancellation terms:</p>
+                        <ul>
+                            <li>30-day written notice required for cancellation</li>
+                            <li>No refunds for partial months</li>
+                            <li>Annual memberships may be cancelled with applicable fees</li>
+                            <li>Freeze options available for temporary suspensions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Digital Services</h3>
+                        <p>Our AI-powered features and digital tools are provided "as is" and we reserve the right to modify or discontinue services with notice.</p>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Limitation of Liability</h3>
+                        <p>FitLife Gym's liability is limited to the extent permitted by law. We are not responsible for indirect, incidental, or consequential damages.</p>
+                    </div>
+                    
+                    <div class="legal-section">
+                        <h3>Changes to Terms</h3>
+                        <p>We reserve the right to modify these terms at any time. Changes will be effective upon posting to our website or app.</p>
+                    </div>
+                    
+                    <div class="legal-footer">
+                        <p><strong>Last updated:</strong> December 17, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2><i class="fas fa-credit-card"></i> Payment</h2>
+                <p>Complete your booking payment</p>
+            </div>
+            <div class="modal-body">
+                <div class="payment-container">
+                    <div class="payment-summary">
+                        <h3>Booking Summary</h3>
+                        <div class="booking-details" id="booking-details">
+                            <div class="detail-row">
+                                <span>Service:</span>
+                                <span id="payment-service-name">Personal Training</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Trainer:</span>
+                                <span id="payment-trainer">Sarah Chen</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Date:</span>
+                                <span id="payment-date">Dec 18, 2024</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Time:</span>
+                                <span id="payment-time">6:00 AM</span>
+                            </div>
+                            <div class="detail-row total">
+                                <span>Total:</span>
+                                <span id="payment-amount">$75.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-form">
+                        <h3>Payment Information</h3>
+                        <div class="payment-methods">
+                            <label class="payment-method active">
+                                <input type="radio" name="payment-method" value="card" checked>
+                                <div class="method-content">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Credit/Debit Card</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="payment-method" value="paypal">
+                                <div class="method-content">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="payment-method" value="apple">
+                                <div class="method-content">
+                                    <i class="fab fa-apple-pay"></i>
+                                    <span>Apple Pay</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="payment-method" value="google">
+                                <div class="method-content">
+                                    <i class="fab fa-google-pay"></i>
+                                    <span>Google Pay</span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="card-form" id="card-form">
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry-date">Expiry Date</label>
+                                    <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-name">Cardholder Name</label>
+                                <input type="text" id="card-name" placeholder="John Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="payment-security">
+                            <i class="fas fa-lock"></i>
+                            <span>Your payment information is secure and encrypted</span>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" onclick="processPayment()">
+                            <i class="fas fa-lock"></i>
+                            Complete Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbot-toggle">
             <i class="fas fa-robot"></i>
         </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-info">
+                    <h4>FitBot Assistant</h4>
+                    <span class="status-indicator">Online</span>
+                </div>
+                <button class="chatbot-close" id="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        Hello! I'm FitBot, your AI fitness assistant. I can help you with workout plans, nutrition advice, class schedules, and answer any fitness-related questions. How can I assist you today?
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+            <div class="chatbot-suggestions">
+                <button class="suggestion-btn" onclick="sendQuickMessage('Create a workout plan for me')">Workout Plan</button>
+                <button class="suggestion-btn" onclick="sendQuickMessage('Give me nutrition advice')">Diet Tips</button>
+                <button class="suggestion-btn" onclick="sendQuickMessage('Show me class schedule')">Class Schedule</button>
+                <button class="suggestion-btn" onclick="sendQuickMessage('Help me set fitness goals')">Set Goals</button>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything about fitness...">
+                <button class="chatbot-send" id="chatbot-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Back to Top Button -->
@@ -2009,11 +2916,31 @@
         <i class="fas fa-moon"></i>
     </button>
 
-    <!-- Notification Container -->
-    <div class="notification-container" id="notification-container">
-        <!-- Notifications will be added here -->
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <i class="fas fa-info-circle"></i>
+        </div>
+        <div class="toast-message">
+            Notification message
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+        </div>
+        <p>Processing...</p>
+    </div>
+
+   <!-- Include your script -->
+<!-- JS -->
+<script src="script.js"></script>
 </body>
 </html>
+
+
